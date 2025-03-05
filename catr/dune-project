@@ -1,0 +1,27 @@
+(lang dune 3.17)
+
+(name catr)
+
+(generate_opam_files true)
+
+(source
+ (github sundywy/ocaml-cli))
+
+(authors "Sundy Yaputra <sundy.yap@gmail.com>")
+
+(maintainers "Sundy Yaputra <sundy.yap@gmail.com>")
+
+(license LICENSE)
+
+(documentation https://url/to/documentation)
+
+(package
+ (name catr)
+ (synopsis "Rust cat in Ocaml")
+ (description "Rust cat in Ocaml")
+ (depends
+  (ocaml (>= 5.3))
+   fmt
+   cmdliner)
+ (tags
+  ("add topics" "to describe" your project)))
