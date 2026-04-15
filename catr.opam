@@ -5,14 +5,11 @@ description: "Rust cat in Ocaml"
 maintainer: ["Sundy Yaputra <sundy.yap@gmail.com>"]
 authors: ["Sundy Yaputra <sundy.yap@gmail.com>"]
 license: "LICENSE"
-tags: ["add topics" "to describe" "your" "project"]
 homepage: "https://github.com/sundywy/ocaml-cli"
-doc: "https://url/to/documentation"
 bug-reports: "https://github.com/sundywy/ocaml-cli/issues"
 depends: [
   "dune" {>= "3.17"}
   "ocaml" {>= "5.3"}
-  "fmt"
   "cmdliner"
   "odoc" {with-doc}
 ]

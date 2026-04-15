@@ -1,6 +1,6 @@
 (lang dune 3.17)
 
-(name catr)
+(name cli)
 
 (generate_opam_files true)
 
@@ -13,15 +13,16 @@
 
 (license LICENSE)
 
-(documentation https://url/to/documentation)
-
 (package
  (name catr)
  (synopsis "Rust cat in Ocaml")
  (description "Rust cat in Ocaml")
  (depends
   (ocaml (>= 5.3))
-   fmt
-   cmdliner)
- (tags
-  ("add topics" "to describe" your project)))
+   cmdliner))
+
+(package
+ (name echor)
+ (synopsis "A short synopsis")
+ (description "A longer description")
+ (depends ocaml))

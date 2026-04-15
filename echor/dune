@@ -1,4 +1,5 @@
 (executable
  (public_name echor)
  (name main)
- (libraries cmdliner))
+ (libraries cmdliner)
+ (package echor))
