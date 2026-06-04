@@ -14,15 +14,9 @@
 (license LICENSE)
 
 (package
- (name catr)
- (synopsis "Rust cat in Ocaml")
- (description "Rust cat in Ocaml")
+ (name cli)
+ (synopsis "Ocaml port of CLI exercise in Rust c")
+ (description "Learning ocaml by using rust book")
  (depends
   (ocaml (>= 5.3))
    cmdliner))
-
-(package
- (name echor)
- (synopsis "A short synopsis")
- (description "A longer description")
- (depends ocaml))

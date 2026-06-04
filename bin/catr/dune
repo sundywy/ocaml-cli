@@ -1,5 +1,4 @@
 (executable
  (public_name catr)
  (name main)
- (libraries cmdliner)
- (package catr))
+ (libraries cmdliner))
