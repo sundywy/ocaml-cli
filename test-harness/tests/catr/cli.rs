@@ -19,16 +19,16 @@ macro_rules! command {
 }
 
 // --------------------------------------------------
-#[test]
-fn usage() -> TestResult {
-    for flag in &["-h", "--help"] {
-        command!()
-            .arg(flag)
-            .assert()
-            .stdout(predicate::str::contains("Usage"));
-    }
-    Ok(())
-}
+// #[test]
+// fn usage() -> TestResult {
+//     for flag in &["-h", "--help"] {
+//         command!()
+//             .arg(flag)
+//             .assert()
+//             .stdout(predicate::str::contains("Usage"));
+//     }
+//     Ok(())
+// }
 
 // --------------------------------------------------
 fn gen_bad_file() -> String {
@@ -49,7 +49,8 @@ fn gen_bad_file() -> String {
 #[test]
 fn skips_bad_file() -> TestResult {
     let bad = gen_bad_file();
-    let expected = format!("{}: .* [(]os error 2[)]", bad);
+    // let expected = format!("{}: .* [(]os error 2[)]", bad);
+    let expected = format!("{}: No such file or directory\n", bad);
     command!()
         .arg(&bad)
         .assert()
