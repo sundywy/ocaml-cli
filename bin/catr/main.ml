@@ -29,19 +29,18 @@ let term =
         let rec print_with_index i =
           match In_channel.(input_line f) with
           | Some line ->
-              if number_lines then (
-                print_endline (format_line i line);
-                print_with_index (i + 1))
-              else if number_nonblank_lines then
-                if String.length line = 0 then (
+              let j =
+                if number_nonblank_lines && String.length line = 0 then (
                   print_newline ();
-                  print_with_index i)
-                else (
+                  i)
+                else if number_lines || number_nonblank_lines then (
                   print_endline (format_line i line);
-                  print_with_index (i + 1))
-              else (
-                print_endline line;
-                print_with_index (i + 1))
+                  i + 1)
+                else (
+                  print_endline line;
+                  i + 1)
+              in
+              print_with_index j
           | None -> ()
         in
         print_with_index 1;
