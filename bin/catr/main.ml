@@ -1,54 +1,6 @@
 open Cmdliner
 
-let open_file_to_string filename =
-  try In_channel.(open_text filename |> input_lines)
-  with Sys_error str ->
-    prerr_endline str;
-    exit 0
-
 let format_line i line = Format.sprintf "%6d\t%s" i line
-
-let print_files files number_lines number_nonblank_lines =
-  let rec print_with_index i lines =
-    match lines with
-    | l :: ls ->
-        if number_lines then (
-          print_endline (format_line i l);
-          print_with_index (i + 1) ls)
-        else if number_nonblank_lines then
-          if String.length l = 0 then (
-            print_newline ();
-            print_with_index i ls)
-          else (
-            print_endline (format_line i l);
-            print_with_index (i + 1) ls)
-        else (
-          print_endline l;
-          print_with_index (i + 1) ls)
-    | [] -> ()
-  in
-  List.map open_file_to_string files |> List.iter (print_with_index 1)
-
-let print_stdin number_lines number_nonblank_lines =
-  let rec print_with_index i =
-    match In_channel.(input_line stdin) with
-    | Some line ->
-        if number_lines then (
-          print_endline (format_line i line);
-          print_with_index (i + 1))
-        else if number_nonblank_lines then
-          if String.length line = 0 then (
-            print_newline ();
-            print_with_index i)
-          else (
-            print_endline (format_line i line);
-            print_with_index (i + 1))
-        else (
-          print_endline line;
-          print_with_index (i + 1))
-    | None -> ()
-  in
-  print_with_index 1
 
 exception Catr of string
 
@@ -67,9 +19,45 @@ let term =
   if number_lines && number_nonblank_lines then
     raise (Catr "Only use number_lines or number_nonblank_lines")
   else
-    match files with
-    | [] | [ "-" ] -> print_stdin number_lines number_nonblank_lines
-    | _ -> print_files files number_lines number_nonblank_lines
+    let print_stdin filename =
+      try
+        let f =
+          match filename with
+          | Some filename' -> In_channel.open_text filename'
+          | None -> stdin
+        in
+        let rec print_with_index i =
+          match In_channel.(input_line f) with
+          | Some line ->
+              if number_lines then (
+                print_endline (format_line i line);
+                print_with_index (i + 1))
+              else if number_nonblank_lines then
+                if String.length line = 0 then (
+                  print_newline ();
+                  print_with_index i)
+                else (
+                  print_endline (format_line i line);
+                  print_with_index (i + 1))
+              else (
+                print_endline line;
+                print_with_index (i + 1))
+          | None -> ()
+        in
+        print_with_index 1;
+        In_channel.close_noerr f
+      with Sys_error str ->
+        prerr_endline str;
+        ()
+    in
+    let rec print_files files =
+      match files with
+      | file :: files' ->
+          print_stdin (Some file);
+          print_files files'
+      | [] -> ()
+    in
+    match files with [] | [ "-" ] -> print_stdin None | _ -> print_files files
 
 let cmd =
   let doc = "Rust cat in ocaml" in
