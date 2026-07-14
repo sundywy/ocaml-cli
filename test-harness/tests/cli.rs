@@ -5,3 +5,7 @@ mod echor {
 mod catr {
     include!("catr/cli.rs");
 }
+
+mod headr {
+    include!("headr/cli.rs");
+}
