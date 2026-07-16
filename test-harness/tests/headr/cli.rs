@@ -16,6 +16,12 @@ const TWO: &str = "./tests/inputs/two.txt";
 const THREE: &str = "./tests/inputs/three.txt";
 const TEN: &str = "./tests/inputs/ten.txt";
 
+macro_rules! command {
+    () => {
+        Command::new("dune").arg("exec").arg(PRG).arg("--")
+    };
+}
+
 // --------------------------------------------------
 fn random_string() -> String {
     rand::thread_rng()
@@ -40,7 +46,7 @@ fn gen_bad_file() -> String {
 fn dies_bad_bytes() -> TestResult {
     let bad = random_string();
     let expected = format!("illegal byte count -- {}", &bad);
-    Command::cargo_bin(PRG)?
+    command!()
         .args(&["-c", &bad, EMPTY])
         .assert()
         .failure()
@@ -54,7 +60,7 @@ fn dies_bad_bytes() -> TestResult {
 fn dies_bad_lines() -> TestResult {
     let bad = random_string();
     let expected = format!("illegal line count -- {}", &bad);
-    Command::cargo_bin(PRG)?
+    command!()
         .args(&["-n", &bad, EMPTY])
         .assert()
         .failure()
@@ -69,7 +75,7 @@ fn dies_bytes_and_lines() -> TestResult {
     let msg = "The argument '--lines <LINES>' cannot be \
                used with '--bytes <BYTES>'";
 
-    Command::cargo_bin(PRG)?
+    command!()
         .args(&["-n", "1", "-c", "2"])
         .assert()
         .failure()
@@ -83,7 +89,7 @@ fn dies_bytes_and_lines() -> TestResult {
 fn skips_bad_file() -> TestResult {
     let bad = gen_bad_file();
     let expected = format!("{}: .* [(]os error 2[)]", bad);
-    Command::cargo_bin(PRG)?
+    command!()
         .args([EMPTY, &bad, ONE])
         .assert()
         .stderr(predicate::str::is_match(expected)?);
@@ -99,7 +105,7 @@ fn run(args: &[&str], expected_file: &str) -> TestResult {
     file.read_to_end(&mut buffer)?;
     let expected = String::from_utf8_lossy(&buffer);
 
-    Command::cargo_bin(PRG)?
+    command!()
         .args(args)
         .assert()
         .success()
@@ -117,7 +123,7 @@ fn run_stdin(args: &[&str], input_file: &str, expected_file: &str) -> TestResult
     let expected = String::from_utf8_lossy(&buffer);
     let input = fs::read_to_string(input_file)?;
 
-    Command::cargo_bin(PRG)?
+    command!()
         .write_stdin(input)
         .args(args)
         .assert()
