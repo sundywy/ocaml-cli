@@ -35,10 +35,13 @@ let print_lines config ic =
     | None -> ()
     | Some line -> (
         match config with
-        | Lines 0 -> ()
         | Lines x when x > 0 ->
             print_endline line;
             loop (Lines (x - 1))
+        | Bytes x when x > 0 ->
+            let line_bytes = String.to_bytes line in
+            print_bytes (Bytes.sub line_bytes 0 x);
+            loop (Bytes (x - Bytes.length line_bytes))
         | _ -> ())
   in
   loop config
