@@ -59,8 +59,8 @@ let rec head_files config paths =
   | [] -> ()
   | [ path ] -> head_file config path
   | path :: paths' ->
-      head_file config path;
       print_endline ("==> " ^ path ^ " <==");
+      head_file config path;
       head_files config paths'
 
 let run config = function
