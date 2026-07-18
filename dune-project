@@ -19,4 +19,6 @@
  (description "Learning ocaml by using rust book")
  (depends
   (ocaml (>= 5.3))
-   cmdliner))
+  cmdliner
+  (alcotest :with-test)
+  (bos :with-test)))

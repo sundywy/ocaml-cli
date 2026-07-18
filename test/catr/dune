@@ -1,0 +1,12 @@
+(test
+ (name test_catr)
+ (libraries alcotest bos)
+ (deps
+  %{bin:catr}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   CATR_BIN
+   %{bin:catr}
+   (run ./test_catr.exe))))

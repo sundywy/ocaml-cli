@@ -11,6 +11,8 @@ depends: [
   "dune" {>= "3.17"}
   "ocaml" {>= "5.3"}
   "cmdliner"
+  "alcotest" {with-test}
+  "bos" {with-test}
   "odoc" {with-doc}
 ]
 build: [

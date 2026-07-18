@@ -1,0 +1,11 @@
+(test
+ (name test_echor)
+ (libraries alcotest bos)
+ (deps
+  %{bin:echor}
+  (glob_files expected/*))
+ (action
+  (setenv
+   ECHOR_BIN
+   %{bin:echor}
+   (run ./test_echor.exe))))

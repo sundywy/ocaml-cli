@@ -29,7 +29,7 @@ let open_input = function
   | path -> (
       try Ok (In_channel.open_text path, true) with Sys_error msg -> Error msg)
 
-let print_lines config ic =
+let print_file config ic =
   let rec loop config =
     match In_channel.input_line ic with
     | None -> ()
@@ -52,11 +52,20 @@ let head_file config path =
   | Ok (ic, close) ->
       Fun.protect
         ~finally:(fun () -> if close then In_channel.close_noerr ic)
-        (fun () -> print_lines config ic)
+        (fun () -> print_file config ic)
+
+let rec head_files config paths =
+  match paths with
+  | [] -> ()
+  | [ path ] -> head_file config path
+  | path :: paths' ->
+      head_file config path;
+      print_endline ("==> " ^ path ^ " <==");
+      head_files config paths'
 
 let run config = function
   | [] | [ "-" ] -> head_file config "-"
-  | files -> List.iter (head_file config) files
+  | files -> head_files config files
 
 let cmd =
   let doc = "Rust Headr" in

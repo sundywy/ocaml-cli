@@ -1,0 +1,12 @@
+(test
+ (name test_headr)
+ (libraries alcotest bos)
+ (deps
+  %{bin:headr}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   HEADR_BIN
+   %{bin:headr}
+   (run ./test_headr.exe))))
