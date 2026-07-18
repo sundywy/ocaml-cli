@@ -1,0 +1,12 @@
+(test
+ (name test_fortuner)
+ (libraries alcotest bos)
+ (deps
+  %{bin:fortuner}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   FORTUNER_BIN
+   %{bin:fortuner}
+   (run ./test_fortuner.exe))))

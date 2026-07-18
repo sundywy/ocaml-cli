@@ -1,0 +1,11 @@
+(test
+ (name test_lsr)
+ (libraries alcotest bos unix)
+ (deps
+  %{bin:lsr}
+  (source_tree inputs))
+ (action
+  (setenv
+   LSR_BIN
+   %{bin:lsr}
+   (run ./test_lsr.exe))))

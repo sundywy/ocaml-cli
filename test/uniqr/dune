@@ -1,0 +1,12 @@
+(test
+ (name test_uniqr)
+ (libraries alcotest bos cli_test)
+ (deps
+  %{bin:uniqr}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   UNIQR_BIN
+   %{bin:uniqr}
+   (run ./test_uniqr.exe))))

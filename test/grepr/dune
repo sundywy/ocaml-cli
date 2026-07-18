@@ -1,0 +1,12 @@
+(test
+ (name test_grepr)
+ (libraries alcotest bos)
+ (deps
+  %{bin:grepr}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   GREPR_BIN
+   %{bin:grepr}
+   (run ./test_grepr.exe))))

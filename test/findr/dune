@@ -1,0 +1,12 @@
+(test
+ (name test_findr)
+ (libraries alcotest bos cli_test)
+ (deps
+  %{bin:findr}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   FINDR_BIN
+   %{bin:findr}
+   (run ./test_findr.exe))))

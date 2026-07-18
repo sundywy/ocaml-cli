@@ -1,0 +1,12 @@
+(test
+ (name test_commr)
+ (libraries alcotest bos)
+ (deps
+  %{bin:commr}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   COMMR_BIN
+   %{bin:commr}
+   (run ./test_commr.exe))))

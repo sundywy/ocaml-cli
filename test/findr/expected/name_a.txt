@@ -1,0 +1,2 @@
+inputs/a
+inputs/a/a.txt

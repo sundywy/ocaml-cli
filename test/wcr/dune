@@ -1,0 +1,12 @@
+(test
+ (name test_wcr)
+ (libraries alcotest bos cli_test)
+ (deps
+  %{bin:wcr}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   WCR_BIN
+   %{bin:wcr}
+   (run ./test_wcr.exe))))

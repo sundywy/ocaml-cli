@@ -1,0 +1,5 @@
+inputs/a/b/b.csv
+inputs/a/b/c/c.mp3
+inputs/d/d.tsv
+inputs/d/d.txt
+inputs/d/e/e.mp3

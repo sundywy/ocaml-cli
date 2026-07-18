@@ -1,0 +1,11 @@
+(test
+ (name test_calr)
+ (libraries alcotest bos)
+ (deps
+  %{bin:calr}
+  (source_tree expected))
+ (action
+  (setenv
+   CALR_BIN
+   %{bin:calr}
+   (run ./test_calr.exe))))

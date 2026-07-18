@@ -1,0 +1,12 @@
+(test
+ (name test_cutr)
+ (libraries alcotest bos cli_test)
+ (deps
+  %{bin:cutr}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   CUTR_BIN
+   %{bin:cutr}
+   (run ./test_cutr.exe))))

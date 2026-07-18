@@ -1,0 +1,25 @@
+==> inputs/ten.txt <==
+e
+two
+three
+four
+five
+six
+seven
+eight
+nine
+ten
+
+==> inputs/empty.txt <==
+
+==> inputs/one.txt <==
+ne line, four wordś.
+
+==> inputs/three.txt <==
+ree
+lines,
+four words.
+
+==> inputs/two.txt <==
+o lines.
+Four words.

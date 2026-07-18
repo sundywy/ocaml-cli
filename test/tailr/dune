@@ -1,0 +1,12 @@
+(test
+ (name test_tailr)
+ (libraries alcotest bos)
+ (deps
+  %{bin:tailr}
+  (source_tree inputs)
+  (source_tree expected))
+ (action
+  (setenv
+   TAILR_BIN
+   %{bin:tailr}
+   (run ./test_tailr.exe))))

@@ -1,0 +1,3 @@
+(library
+ (name cli_test)
+ (libraries alcotest bos astring))

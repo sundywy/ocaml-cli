@@ -1,0 +1,4 @@
+inputs/a/b
+inputs/a/b/c
+inputs/d
+inputs/d/e
