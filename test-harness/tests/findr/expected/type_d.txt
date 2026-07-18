@@ -1,0 +1,7 @@
+tests/findr/inputs
+tests/findr/inputs/a
+tests/findr/inputs/a/b
+tests/findr/inputs/a/b/c
+tests/findr/inputs/d
+tests/findr/inputs/d/e
+tests/findr/inputs/f

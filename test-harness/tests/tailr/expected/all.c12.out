@@ -1,0 +1,15 @@
+==> tests/tailr/inputs/ten.txt <==
+ht
+nine
+ten
+
+==> tests/tailr/inputs/empty.txt <==
+
+==> tests/tailr/inputs/one.txt <==
+our wordś.
+
+==> tests/tailr/inputs/three.txt <==
+four words.
+
+==> tests/tailr/inputs/two.txt <==
+Four words.

@@ -1,0 +1,2 @@
+tests/findr/inputs/a/a.txt
+tests/findr/inputs/d/d.txt

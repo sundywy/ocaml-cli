@@ -1,0 +1,6 @@
+tests/findr/inputs/d
+tests/findr/inputs/d/b.csv
+tests/findr/inputs/d/d.tsv
+tests/findr/inputs/d/d.txt
+tests/findr/inputs/d/e
+tests/findr/inputs/d/e/e.mp3

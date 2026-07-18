@@ -1,0 +1,3 @@
+tests/findr/inputs/a/b/b.csv
+tests/findr/inputs/d/b.csv
+tests/findr/inputs/g.csv

@@ -1,0 +1,3 @@
+tests/findr/inputs/d/d.tsv
+tests/findr/inputs/d/d.txt
+tests/findr/inputs/d/e/e.mp3

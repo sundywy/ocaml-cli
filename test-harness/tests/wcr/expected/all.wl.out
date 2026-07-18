@@ -1,0 +1,4 @@
+       0       0 tests/wcr/inputs/empty.txt
+       1       9 tests/wcr/inputs/fox.txt
+       4      29 tests/wcr/inputs/atlamal.txt
+       5      38 total

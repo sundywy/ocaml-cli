@@ -1,0 +1,4 @@
+tests/grepr/inputs/bustle.txt:3
+tests/grepr/inputs/empty.txt:0
+tests/grepr/inputs/fox.txt:1
+tests/grepr/inputs/nobody.txt:1

@@ -1,0 +1,9 @@
+tests/findr/inputs/a/a.txt
+tests/findr/inputs/a/b/b.csv
+tests/findr/inputs/a/b/c/c.mp3
+tests/findr/inputs/d/b.csv
+tests/findr/inputs/d/d.tsv
+tests/findr/inputs/d/d.txt
+tests/findr/inputs/d/e/e.mp3
+tests/findr/inputs/f/f.txt
+tests/findr/inputs/g.csv
